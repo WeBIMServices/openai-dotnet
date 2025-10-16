@@ -88,12 +88,44 @@ public class PaginationVisitor : ScmLibraryVisitor
             ("ContainerFileResource", "ContainerFileCollectionOptions", _paginationParamsToReplace)
         },
         {
-            "GetInputItems",
+            "GetResponseInputItems",
             ("ResponseItem", "ResponseItemCollectionOptions", _paginationParamsToReplace)
         },
         {
-            "GetInputItemsAsync",
+            "GetResponseInputItemsAsync",
             ("ResponseItem", "ResponseItemCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetAssistants",
+            ("Assistant", "AssistantCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetAssistantsAsync",
+            ("Assistant", "AssistantCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetMessages",
+            ("ThreadMessage", "MessageCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetMessagesAsync",
+            ("ThreadMessage", "MessageCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetRuns",
+            ("ThreadRun", "RunCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetRunsAsync",
+            ("ThreadRun", "RunCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetRunSteps",
+            ("RunStep", "RunStepCollectionOptions", _paginationParamsToReplace)
+        },
+        {
+            "GetRunStepsAsync",
+            ("RunStep", "RunStepCollectionOptions", _paginationParamsToReplace)
         }
     };
 
