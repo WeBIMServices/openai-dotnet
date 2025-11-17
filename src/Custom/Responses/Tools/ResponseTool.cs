@@ -50,9 +50,20 @@ public partial class ResponseTool
     }
 
     // CUSTOM: Added factory method as a convenience.
-    public static WebSearchTool CreateWebSearchTool(WebSearchToolLocation userLocation = null, WebSearchToolContextSize? searchContextSize = null)
+    public static WebSearchTool CreateWebSearchTool(WebSearchToolLocation userLocation = null, WebSearchToolContextSize? searchContextSize = null, WebSearchToolFilters filters = null)
     {
         return new WebSearchTool(
+            kind: InternalToolType.WebSearch,
+            patch: default,
+            userLocation: userLocation,
+            searchContextSize: searchContextSize,
+            filters: filters);
+    }
+
+    // CUSTOM: Added factory method as a convenience.
+    public static WebSearchPreviewTool CreateWebSearchPreviewTool(WebSearchToolLocation userLocation = null, WebSearchToolContextSize? searchContextSize = null)
+    {
+        return new WebSearchPreviewTool(
             kind: InternalToolType.WebSearchPreview,
             patch: default,
             userLocation: userLocation,
@@ -115,7 +126,7 @@ public partial class ResponseTool
     /// <summary>
     /// Creates a new instance of the <see cref="ImageGenerationTool"/> class.
     /// </summary>
-    public static ImageGenerationTool CreateImageGenerationTool(string model, ImageGenerationToolQuality? quality = null, ImageGenerationToolSize? size = null, ImageGenerationToolOutputFileFormat? outputFileFormat = null, int? outputCompressionFactor = null, ImageGenerationToolModerationLevel? moderationLevel = null, ImageGenerationToolBackground? background = null, ImageGenerationToolInputFidelityLevel? inputFidelityLevel = null, ImageGenerationToolInputImageMask inputImageMask = null, int? partialImageCount = null)
+    public static ImageGenerationTool CreateImageGenerationTool(string model, ImageGenerationToolQuality? quality = null, ImageGenerationToolSize? size = null, ImageGenerationToolOutputFileFormat? outputFileFormat = null, int? outputCompressionFactor = null, ImageGenerationToolModerationLevel? moderationLevel = null, ImageGenerationToolBackground? background = null, ImageGenerationToolInputFidelity? inputFidelity = null, ImageGenerationToolInputImageMask inputImageMask = null, int? partialImageCount = null)
     {
         return new ImageGenerationTool(
             kind: InternalToolType.ImageGeneration,
@@ -127,7 +138,7 @@ public partial class ResponseTool
             outputCompressionFactor: outputCompressionFactor,
             moderationLevel: moderationLevel,
             background: background,
-            inputFidelityLevel: inputFidelityLevel,
+            inputFidelity: inputFidelity,
             inputImageMask: inputImageMask,
             partialImageCount: partialImageCount);
     }

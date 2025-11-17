@@ -20,9 +20,10 @@ namespace OpenAI.Chat
         internal InternalChatCompletionRequestMessageContentPartAudio(in JsonPatch patch, InternalChatCompletionRequestMessageContentPartAudioInputAudio inputAudio) : base(patch)
         {
             InputAudio = inputAudio;
+            Patch.SetPropagators(PropagateSet, PropagateGet);
         }
 #pragma warning restore SCME0001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
-        internal InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; }
+        internal InternalChatCompletionRequestMessageContentPartAudioInputAudio InputAudio { get; set; }
     }
 }

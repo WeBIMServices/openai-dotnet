@@ -74,6 +74,8 @@ namespace OpenAI.Responses
                         return FileCitationMessageAnnotation.DeserializeFileCitationMessageAnnotation(element, data, options);
                     case "url_citation":
                         return UriCitationMessageAnnotation.DeserializeUriCitationMessageAnnotation(element, data, options);
+                    case "container_file_citation":
+                        return ContainerFileCitationMessageAnnotation.DeserializeContainerFileCitationMessageAnnotation(element, data, options);
                     case "file_path":
                         return FilePathMessageAnnotation.DeserializeFilePathMessageAnnotation(element, data, options);
                 }
@@ -103,7 +105,7 @@ namespace OpenAI.Responses
             switch (format)
             {
                 case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data))
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
                     {
                         return DeserializeResponseMessageAnnotation(document.RootElement, data, options);
                     }

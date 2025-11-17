@@ -129,7 +129,7 @@ namespace OpenAI.Responses
             switch (format)
             {
                 case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data))
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
                     {
                         return DeserializeResponseDeletionResult(document.RootElement, data, options);
                     }
@@ -142,9 +142,9 @@ namespace OpenAI.Responses
 
         public static explicit operator ResponseDeletionResult(ClientResult result)
         {
-            using PipelineResponse response = result.GetRawResponse();
+            PipelineResponse response = result.GetRawResponse();
             BinaryData data = response.Content;
-            using JsonDocument document = JsonDocument.Parse(data);
+            using JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions);
             return DeserializeResponseDeletionResult(document.RootElement, data, ModelSerializationExtensions.WireOptions);
         }
     }
